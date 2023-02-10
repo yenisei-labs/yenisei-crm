@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import (
+    HttpResponse,
+    HttpResponseNotFound,
+    HttpResponseNotAllowed,
+    HttpResponseRedirect,
+)
 from django.contrib.auth.decorators import login_required
 from .forms import DealListForm
 from .models import DealList
@@ -13,8 +18,9 @@ def get_deals(request):
         'deal_lists': deal_lists
     })
 
+
 @login_required
-def deals_api(request):
+def lists_api(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -26,3 +32,22 @@ def deals_api(request):
             deal_list = DealList(title=title)
             deal_list.save()
             return HttpResponseRedirect('/crm/deals/')
+
+
+@login_required
+def list_api(request, pk: int):
+    def handle_delete_request():
+        try:
+            deal_list = DealList.objects.get(id=pk)
+        except DealList.DoesNotExist:
+            return HttpResponseNotFound()
+
+        deal_list.delete()
+        response = HttpResponse()
+        response.status_code = 200
+        return response
+
+    if request.method == 'DELETE':
+        return handle_delete_request()
+    
+    return HttpResponseNotAllowed(['DELETE'])

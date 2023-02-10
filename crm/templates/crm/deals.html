@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<form method="POST" action="/crm/api/deals/" class="new-list-form">
+<form method="POST" action="/crm/api/lists/" class="new-list-form">
     <h2>New deal list</h2>
     {% csrf_token %}
     {{ new_deal_form }}
@@ -23,7 +23,7 @@
             <div class="title">
                 <p>{{ deal_list.title }}</p>
                 <button>e</button>
-                <button>d</button>
+                <button onclick="(() => delete_deal_list('{{ csrf_token }}', {{ deal_list.id }}))()">d</button>
             </div>
         </div>
     {% endfor %}
