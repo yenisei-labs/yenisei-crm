@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import (
     HttpResponse,
+    HttpResponseBadRequest,
     HttpResponseNotFound,
     HttpResponseNotAllowed,
     HttpResponseRedirect,
@@ -36,6 +37,28 @@ def lists_api(request):
 
 @login_required
 def list_api(request, pk: int):
+    # Formally, this is instead of a PATCH request.
+    # I couldn't find a way to get the data from the PATCH request.
+    def handle_post_request():
+        try:
+            deal_list = DealList.objects.get(id=pk)
+        except DealList.DoesNotExist:
+            return HttpResponseNotFound()
+        
+        form = DealListForm(request.POST)
+        # check whether the form is valid:
+        if not form.is_valid():
+            return HttpResponseBadRequest()
+        
+        # process the data in form.cleaned_data as required
+        title = form.cleaned_data['title']
+        deal_list.title = title
+        deal_list.save()
+
+        response = HttpResponse()
+        response.status_code = 200
+        return response
+
     def handle_delete_request():
         try:
             deal_list = DealList.objects.get(id=pk)
@@ -47,7 +70,10 @@ def list_api(request, pk: int):
         response.status_code = 200
         return response
 
+    if request.method == 'POST':
+        return handle_post_request()
+
     if request.method == 'DELETE':
         return handle_delete_request()
-    
-    return HttpResponseNotAllowed(['DELETE'])
+
+    return HttpResponseNotAllowed(['POST', 'DELETE'])

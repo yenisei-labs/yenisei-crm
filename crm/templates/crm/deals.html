@@ -20,11 +20,11 @@
 <div id="list-container">
     {% for deal_list in deal_lists %}
         <div class="deal-list">
-            <div class="title">
-                <p>{{ deal_list.title }}</p>
-                <button>e</button>
-                <button onclick="(() => delete_deal_list('{{ csrf_token }}', {{ deal_list.id }}))()">d</button>
-            </div>
+            <form class="title" onsubmit="(() => patch_deal_list(event, {{ deal_list.id }}, '{{ csrf_token }}'))()">
+                <input name="title" value="{{ deal_list.title }}" />
+                <button type="submit">s</button>
+                <button type="button" onclick="(() => delete_deal_list('{{ csrf_token }}', {{ deal_list.id }}))()">d</button>
+            </form>
         </div>
     {% endfor %}
 </div>
