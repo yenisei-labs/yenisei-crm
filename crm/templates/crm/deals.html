@@ -1,0 +1,33 @@
+{% extends "common/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'crm/deals.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/crm/api/deals/" class="new-list-form">
+    <h2>New deal list</h2>
+    {% csrf_token %}
+    {{ new_deal_form }}
+    <input type="submit" value="+" />
+</form>
+
+<hr />
+
+<div id="list-container">
+    {% for deal_list in deal_lists %}
+        <div class="deal-list">
+            <div class="title">
+                <p>{{ deal_list.title }}</p>
+                <button>e</button>
+                <button>d</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'crm/deals.js' %}" ></script>
+{% endblock %}

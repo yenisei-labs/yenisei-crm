@@ -1,0 +1,65 @@
+.new-list-form {
+    margin: 1em;
+}
+
+.new-list-form h2 {
+    font-size: inherit;
+}
+
+.new-list-form input {
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    outline: none;
+    background-color: white;
+}
+
+.new-list-form input[type=text] {
+    width: 200px;
+}
+
+.new-list-form input[type=submit] {
+    width: 26px;
+    cursor: pointer;
+}
+
+.new-list-form input[type=submit]:hover {
+    border: 1px solid #000;
+}
+
+#list-container {
+    display: flex;
+    gap: 10px;
+    margin: 1em;
+}
+
+.deal-list {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.deal-list .title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.deal-list .title p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.deal-list .title button {
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+}
+
+.deal-list .title button:hover {
+    border: 1px solid #000;
+}

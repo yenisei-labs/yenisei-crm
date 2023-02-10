@@ -4,8 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Yenisei CRM</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'common/base.css' %}" />
+    {% block head %}
+    {% endblock %}
   </head>
   <body>
+    <header>
+        <h1>Yenisei CRM</h1>
+        <a href="/crm/deals/">Deals</a>
+        <a href="/crm/contacts/">Contacts</a>
+        <a href="/accounts/logout/">Log out</a>
+    </header>
     <main>
       {% block content %}
       {% endblock %}
