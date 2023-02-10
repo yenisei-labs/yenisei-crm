@@ -20,10 +20,10 @@
 <div id="list-container">
     {% for deal_list in deal_lists %}
         <div class="deal-list">
-            <form class="title" onsubmit="(() => patch_deal_list(event, {{ deal_list.id }}, '{{ csrf_token }}'))()">
+            <form class="title" onsubmit="patch_deal_list(event, {{ deal_list.id }}, '{{ csrf_token }}')">
                 <input name="title" value="{{ deal_list.title }}" />
                 <button type="submit">s</button>
-                <button type="button" onclick="(() => delete_deal_list('{{ csrf_token }}', {{ deal_list.id }}))()">d</button>
+                <button type="button" onclick="delete_deal_list('{{ csrf_token }}', {{ deal_list.id }})">d</button>
             </form>
             <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
                 Create a deal
