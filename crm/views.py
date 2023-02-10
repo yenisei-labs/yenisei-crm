@@ -7,16 +7,36 @@ from django.http import (
     HttpResponseRedirect,
 )
 from django.contrib.auth.decorators import login_required
-from .forms import DealListForm
+from .forms import DealListForm, DealForm
 from .models import DealList
 
 @login_required
 def get_deals(request):
     deal_lists = DealList.objects.all()
-    new_deal_form = DealListForm()
+    deal_list_form = DealListForm()
     return render(request, 'crm/deals.html', {
-        'new_deal_form': new_deal_form,
+        'new_deal_form': deal_list_form,
         'deal_lists': deal_lists
+    })
+
+
+@login_required
+def new_deal(request):
+    try:
+        list_id = request.GET['list']
+    except KeyError:
+        return HttpResponseBadRequest()
+
+    try:
+        deal_list = DealList.objects.get(id=list_id)
+    except DealList.DoesNotExist:
+        return HttpResponseNotFound()
+
+    deal_form = DealForm()
+
+    return render(request, 'crm/new-deal.html', {
+        'deal_list': deal_list,
+        'deal_form': deal_form,
     })
 
 
