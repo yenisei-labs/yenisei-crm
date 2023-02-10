@@ -25,6 +25,9 @@
                 <button type="submit">s</button>
                 <button type="button" onclick="(() => delete_deal_list('{{ csrf_token }}', {{ deal_list.id }}))()">d</button>
             </form>
+            <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
+                Create a deal
+            </button>
         </div>
     {% endfor %}
 </div>

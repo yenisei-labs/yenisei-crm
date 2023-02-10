@@ -59,3 +59,17 @@
 .deal-list .title button:hover {
     border: 1px solid #000;
 }
+
+.deal-list .create-btn {
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.deal-list .create-btn:hover {
+    border: 1px solid black;
+}
