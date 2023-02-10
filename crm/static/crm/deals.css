@@ -2,10 +2,6 @@
     margin: 1em;
 }
 
-.new-list-form h2 {
-    font-size: inherit;
-}
-
 .new-list-form input {
     height: 26px;
     border-radius: 4px;
