@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import DealList, Deal, Person
 
-# Register your models here.
+admin.site.register(DealList)
+admin.site.register(Deal)
+admin.site.register(Person)
