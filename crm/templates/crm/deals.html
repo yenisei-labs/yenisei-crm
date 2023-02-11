@@ -12,7 +12,9 @@
     <h2>New deal list</h2>
     {% csrf_token %}
     {{ new_deal_form }}
-    <input type="submit" value="+" />
+    <button type="submit">
+        <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
+    </button>
 </form>
 
 <hr />
@@ -22,10 +24,15 @@
         <div class="deal-list">
             <form class="title" onsubmit="patch_deal_list(event, {{ deal_list.id }}, '{{ csrf_token }}')">
                 <input name="title" value="{{ deal_list.title }}" />
-                <button type="submit">s</button>
-                <button type="button" onclick="delete_deal_list('{{ csrf_token }}', {{ deal_list.id }})">d</button>
+                <button type="submit">
+                    <img src="{% static 'crm/floppy-disk-regular.svg' %}" width="12px" height="12px" />
+                </button>
+                <button type="button" onclick="delete_deal_list('{{ csrf_token }}', {{ deal_list.id }})">
+                    <img src="{% static 'crm/trash-solid.svg' %}" width="12px" height="12px" />
+                </button>
             </form>
             <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
+                <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
                 Create a deal
             </button>
 
@@ -33,7 +40,9 @@
             {% for deal in deal_list.deals.all %}
             <li class="deal" data-id="{{deal.id}}">
                 <p>{{ deal.title }}</p>
-                <a class="edit" href="/crm/edit-deal/{{deal.id}}/">Edit</a>
+                <a class="edit" href="/crm/edit-deal/{{deal.id}}/">
+                    <img src="{% static 'crm/pen-to-square-solid.svg' %}" width="12px" height="12px" />
+                </a>
             </li>
             {% endfor %}
             </ul>
