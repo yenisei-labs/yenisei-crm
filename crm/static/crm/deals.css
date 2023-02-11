@@ -41,10 +41,19 @@
     gap: 4px;
 }
 
-.deal-list .title p {
+.deal-list .title input {
     margin-top: 0;
     margin-bottom: 0;
     font-weight: bold;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.deal-list .title input:focus,
+.deal-list .title input:hover {
+    border: 1px solid #000;
 }
 
 .deal-list .title button {
@@ -71,5 +80,52 @@
 }
 
 .deal-list .create-btn:hover {
-    border: 1px solid black;
+    border: 1px solid #000;
+}
+
+.sortable-deal-list {
+    min-height: 150px;
+    padding-left: 0;
+}
+
+.sortable-deal-list li {
+    list-style: none;
+}
+
+.deal,
+.ghost-deal {
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deal:hover {
+    border: 1px solid #000;
+}
+
+.deal p,
+.ghost-deal p {
+    pointer-events: none;
+    margin: 0;
+}
+
+.deal p::selection {
+    background-color: inherit;
+    color: inherit;
+}
+
+.deal .edit {
+    color: #acc2f4;
+}
+
+.ghost-deal {
+    background-color: #acc2f4;
+}
+
+.ghost-deal .edit {
+    display: none;
 }

@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<form method="POST" action="/crm/api/lists/" class="new-list-form">
+<form method="POST" action="/crm/deals/" class="new-list-form">
     <h2>New deal list</h2>
     {% csrf_token %}
     {{ new_deal_form }}
@@ -28,9 +28,33 @@
             <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
                 Create a deal
             </button>
+
+            <ul class="sortable-deal-list" data-id="{{deal_list.id}}" csrf="{{ csrf_token }}">
+            {% for deal in deal_list.deals.all %}
+            <li class="deal" data-id="{{deal.id}}">
+                <p>{{ deal.title }}</p>
+                <a class="edit" href="/crm/edit-deal/{{deal.id}}/">Edit</a>
+            </li>
+            {% endfor %}
+            </ul>
         </div>
     {% endfor %}
+    {% if deals_without_list.count > 0 %}
+    <div class="deal-list">
+        <div class="title">
+            Deals without list
+        </div>
+        <ul class="sortable-deal-list" data-id="-1" csrf="-1">
+        {% for deal in deals_without_list %}
+            <li class="deal" data-id="{{deal.id}}">
+                {{ deal.title }}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 </div>
 
 <script src="{% static 'crm/deals.js' %}" ></script>
+<script src="{% static 'crm/sortable-1.15.0.min.js' %}"></script>
 {% endblock %}

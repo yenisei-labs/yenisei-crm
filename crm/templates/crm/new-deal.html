@@ -7,10 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<h1>New deal in the list "{{ deal_list.title }}"</h1>
+<h1>New deal</h1>
 <a href="/crm/deals/">Go back</a>
 
-<form>
+<form method="POST" action="{{submit_url}}">
     {% csrf_token %}
     {{ deal_form.as_p }}
     <input type="submit" value="Submit" />

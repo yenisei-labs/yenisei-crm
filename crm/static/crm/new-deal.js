@@ -3,7 +3,8 @@ function selectListUsingUrlParam() {
     const list = params.get("list")
     if (!list) return
 
-    selectElement = document.querySelector("#id_list")
+    selectElement = document.querySelector('select[name="list"]')
+    if (!selectElement) return
     selectElement.value = parseInt(list)
 }
 

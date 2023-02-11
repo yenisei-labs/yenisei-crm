@@ -76,9 +76,17 @@ class Deal(models.Model):
         on_delete=models.SET_NULL,
     )
 
+    order = models.IntegerField(
+        default=0,
+        help_text="Sorting is done by this field",
+    )
+
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["order", "created_at"]
 
     def __str__(self):
         return self.title
