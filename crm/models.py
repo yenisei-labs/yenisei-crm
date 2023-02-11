@@ -12,9 +12,15 @@ class Person(models.Model):
     phone = models.CharField(max_length=20, null=True, default=None)
     delivery_address = models.CharField(max_length=256, null=True, default=None)
 
+    def __str__(self):
+        return self.first_name
+
 
 class DealList(models.Model):
     title = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.title
 
 
 class Deal(models.Model):
@@ -73,3 +79,6 @@ class Deal(models.Model):
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
