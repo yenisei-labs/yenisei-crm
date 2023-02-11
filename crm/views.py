@@ -41,25 +41,27 @@ def new_deal(request):
 
 
 @login_required
-def lists_api(request):
+def lists_api(request) -> HttpResponse:
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = DealListForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            title = form.cleaned_data['title']
-            deal_list = DealList(title=title)
-            deal_list.save()
-            return HttpResponseRedirect('/crm/deals/')
+        if not form.is_valid():
+            return HttpResponseBadRequest()
+
+        # process the data in form.cleaned_data as required
+        title = form.cleaned_data['title']
+        deal_list = DealList(title=title)
+        deal_list.save()
+        return HttpResponseRedirect('/crm/deals/')
+    return HttpResponseNotAllowed(['POST'])
 
 
 @login_required
-def list_api(request, pk: int):
+def list_api(request, pk: int) -> HttpResponse:
     # Formally, this is instead of a PATCH request.
     # I couldn't find a way to get the data from the PATCH request.
-    def handle_post_request():
+    def handle_post_request() -> HttpResponse:
         try:
             deal_list = DealList.objects.get(id=pk)
         except DealList.DoesNotExist:
@@ -79,7 +81,7 @@ def list_api(request, pk: int):
         response.status_code = 200
         return response
 
-    def handle_delete_request():
+    def handle_delete_request() -> HttpResponse:
         try:
             deal_list = DealList.objects.get(id=pk)
         except DealList.DoesNotExist:
