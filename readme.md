@@ -4,7 +4,14 @@ Just CRM, nothing more.
 
 ## Getting started
 
-- Development server:
+Create a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Start dev server:
 ```bash
 python manage.py migrate
 python manage.py runserver

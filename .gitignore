@@ -1,2 +1,6 @@
+# Django
 *.sqlite3
+
+# Python
+.venv
 __pycache__
