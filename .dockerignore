@@ -1,0 +1,15 @@
+# Git
+.gitignore
+.git
+.github
+
+# Python
+.venv
+__pycache__
+
+# Django
+*.sqlite3
+
+# Docs
+readme.md
+license.md
