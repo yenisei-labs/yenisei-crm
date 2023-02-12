@@ -27,7 +27,7 @@ SECRET_KEY = get_secret_key()
 DEBUG = not is_production()
 
 ALLOWED_HOSTS = get_allowed_hosts()
-CSRF_TRUSTED_ORIGINS = get_allowed_hosts()
+CSRF_TRUSTED_ORIGINS = get_allowed_hosts(add_scheme=True)
 
 # Application definition
 
