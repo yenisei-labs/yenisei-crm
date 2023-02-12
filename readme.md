@@ -28,3 +28,30 @@ python manage.py runserver
 - `Y_CRM_DB_NAME` - name of the database. Default: `yenisei`.
 - `Y_CRM_DB_USER` - database user. Default: `yenisei`.
 - `Y_CRM_DB_PASSWORD` - database password.
+
+## Docker-compose
+```yml
+services:
+  yenisei-crm-db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=secret-pass
+      - POSTGRES_USER=yenisei
+      - POSTGRES_DB=yenisei
+    volumes:
+      - crm-db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  yenisei-crm:
+    image: ghcr.io/yenisei-labs/yenisei-crm
+    environment:
+      - Y_CRM_SECRET_KEY=another-secret-pass
+      - Y_CRM_HOST=yenisei-crm.com
+      - Y_CRM_DB_HOST=yenisei-crm-db
+      - Y_CRM_DB_PASSWORD=secret-pass
+    depends_on:
+      - yenisei-crm-db
+
+volumes:
+  crm-db:
+```
