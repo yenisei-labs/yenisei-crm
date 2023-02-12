@@ -11,6 +11,6 @@ def get_allowed_hosts(add_scheme = False) -> list[str]:
     custom_host = os.environ.get("Y_CRM_HOST", None)
     if custom_host is not None:
         url = 'https://' + custom_host if add_scheme else custom_host
-        allowed_hosts.append(custom_host)
+        allowed_hosts.append(url)
 
     return allowed_hosts
