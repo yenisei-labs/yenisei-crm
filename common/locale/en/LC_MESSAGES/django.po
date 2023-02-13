@@ -1,0 +1,30 @@
+# Yenisei CRM translation file.
+# Copyright (C) 2023
+# This file is distributed under the same license as the Yenisei CRM package.
+# Ivan Reshetnikov <dev@yenisei.store>.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-13 11:29+0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: common/templates/common/base.html:8 common/templates/common/base.html:16
+msgid "Yenisei CRM"
+msgstr ""
+
+#: common/templates/common/base.html:17
+msgid "Deals"
+msgstr ""
+
+#: common/templates/common/base.html:18
+msgid "Contacts"
+msgstr ""
+
+#: common/templates/common/base.html:19
+msgid "Log out"
+msgstr ""

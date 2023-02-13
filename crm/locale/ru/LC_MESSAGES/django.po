@@ -1,0 +1,120 @@
+# Yenisei CRM translation file.
+# Copyright (C) 2023
+# This file is distributed under the same license as the Yenisei CRM package.
+# Ivan Reshetnikov <dev@yenisei.store>.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-13 11:41+0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: crm/forms.py:8
+msgid "Title"
+msgstr "Заголовок"
+
+#: crm/forms.py:13
+msgid "Title *"
+msgstr "Заголовок *"
+
+#: crm/forms.py:17
+msgid "Notes"
+msgstr "Заметки"
+
+#: crm/forms.py:23
+msgid "Goods"
+msgstr "Товар"
+
+#: crm/forms.py:30
+msgid "Income"
+msgstr "Доход"
+
+#: crm/forms.py:34
+msgid "Goods cost"
+msgstr "Стоимость товара"
+
+#: crm/forms.py:38
+msgid "Loading cost"
+msgstr "Стоимость погрузки"
+
+#: crm/forms.py:42
+msgid "Delivery cost"
+msgstr "Стоимость доставки"
+
+#: crm/forms.py:46
+msgid "Other expenses"
+msgstr "Прочие расходы"
+
+#: crm/forms.py:50
+msgid "Tax"
+msgstr "Налог"
+
+#: crm/forms.py:56
+msgid "Delivery date"
+msgstr "Дата доставки"
+
+#: crm/forms.py:63 crm/forms.py:121
+msgid "Delivery address"
+msgstr "Адрес доставки"
+
+#: crm/forms.py:68
+msgid "Loading address"
+msgstr "Адрес погрузки"
+
+#: crm/forms.py:75
+msgid "Buyer"
+msgstr "Покупатель"
+
+#: crm/forms.py:80
+msgid "List of deals"
+msgstr "Список сделок"
+
+#: crm/forms.py:95
+msgid "First name"
+msgstr "Имя"
+
+#: crm/forms.py:102
+msgid "Last name"
+msgstr "Фамилия"
+
+#: crm/forms.py:107
+msgid "Company"
+msgstr "Компания"
+
+#: crm/forms.py:111
+msgid "Email"
+msgstr "Email"
+
+#: crm/forms.py:116
+msgid "Phone"
+msgstr "Телефон"
+
+#: crm/templates/crm/contacts.html:6
+msgid "New contact"
+msgstr "Новый контакт"
+
+#: crm/templates/crm/contacts.html:14
+msgid "No contacts"
+msgstr "Нет контактов"
+
+#: crm/templates/crm/deals.html:13
+msgid "New deal list"
+msgstr "Новый список сделок"
+
+#: crm/templates/crm/deals.html:37
+msgid "Create a deal"
+msgstr "Создать сделку"
+
+#: crm/templates/crm/deals.html:55
+msgid "Deals without list"
+msgstr "Сделки без списка"
+
+#: crm/templates/crm/new-deal.html:14
+msgid "Save"
+msgstr "Сохранить"

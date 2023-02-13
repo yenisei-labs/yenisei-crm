@@ -1,0 +1,118 @@
+# Yenisei CRM translation file.
+# Copyright (C) 2023
+# This file is distributed under the same license as the Yenisei CRM package.
+# Ivan Reshetnikov <dev@yenisei.store>.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-13 11:41+0500\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: crm/forms.py:8
+msgid "Title"
+msgstr ""
+
+#: crm/forms.py:13
+msgid "Title *"
+msgstr ""
+
+#: crm/forms.py:17
+msgid "Notes"
+msgstr ""
+
+#: crm/forms.py:23
+msgid "Goods"
+msgstr ""
+
+#: crm/forms.py:30
+msgid "Income"
+msgstr ""
+
+#: crm/forms.py:34
+msgid "Goods cost"
+msgstr ""
+
+#: crm/forms.py:38
+msgid "Loading cost"
+msgstr ""
+
+#: crm/forms.py:42
+msgid "Delivery cost"
+msgstr ""
+
+#: crm/forms.py:46
+msgid "Other expenses"
+msgstr ""
+
+#: crm/forms.py:50
+msgid "Tax"
+msgstr ""
+
+#: crm/forms.py:56
+msgid "Delivery date"
+msgstr ""
+
+#: crm/forms.py:63 crm/forms.py:121
+msgid "Delivery address"
+msgstr ""
+
+#: crm/forms.py:68
+msgid "Loading address"
+msgstr ""
+
+#: crm/forms.py:75
+msgid "Buyer"
+msgstr ""
+
+#: crm/forms.py:80
+msgid "List of deals"
+msgstr ""
+
+#: crm/forms.py:95
+msgid "First name"
+msgstr ""
+
+#: crm/forms.py:102
+msgid "Last name"
+msgstr ""
+
+#: crm/forms.py:107
+msgid "Company"
+msgstr ""
+
+#: crm/forms.py:111
+msgid "Email"
+msgstr ""
+
+#: crm/forms.py:116
+msgid "Phone"
+msgstr ""
+
+#: crm/templates/crm/contacts.html:6
+msgid "New contact"
+msgstr ""
+
+#: crm/templates/crm/contacts.html:14
+msgid "No contacts"
+msgstr ""
+
+#: crm/templates/crm/deals.html:13
+msgid "New deal list"
+msgstr ""
+
+#: crm/templates/crm/deals.html:37
+msgid "Create a deal"
+msgstr ""
+
+#: crm/templates/crm/deals.html:55
+msgid "Deals without list"
+msgstr ""
+
+#: crm/templates/crm/new-deal.html:14
+msgid "Save"
+msgstr ""

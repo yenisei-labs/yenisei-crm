@@ -1,6 +1,7 @@
 {% extends "common/base.html" %}
 
 {% load static %}
+{% load i18n %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'crm/deals.css' %}" />
@@ -9,7 +10,7 @@
 {% block content %}
 
 <form method="POST" action="/crm/deals/" class="new-list-form">
-    <h2>New deal list</h2>
+    <h2>{% translate 'New deal list' %}</h2>
     {% csrf_token %}
     {{ new_deal_form }}
     <button type="submit">
@@ -33,7 +34,7 @@
             </form>
             <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
                 <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
-                Create a deal
+                {% translate 'Create a deal' %}
             </button>
 
             <ul class="sortable-deal-list" data-id="{{deal_list.id}}" csrf="{{ csrf_token }}">
@@ -51,7 +52,7 @@
     {% if deals_without_list.count > 0 %}
     <div class="deal-list">
         <div class="title">
-            Deals without list
+            {% translate 'Deals without list' %}
         </div>
         <ul class="sortable-deal-list" data-id="-1" csrf="-1">
         {% for deal in deals_without_list %}

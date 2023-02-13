@@ -1,18 +1,12 @@
 {% extends "common/base.html" %}
 
-{% load static %}
 {% load i18n %}
-
-{% block head %}
-<link rel="stylesheet" href="{% static 'crm/new-deal.css' %}" />
-{% endblock %}
 
 {% block content %}
 <form method="POST" action="{{submit_url}}">
     {% csrf_token %}
-    {{ deal_form.as_p }}
+    {{ contact_form.as_p }}
     <input type="submit" value="{% translate 'Save' %}" />
 </form>
 
-<script src="{% static 'crm/new-deal.js' %}"></script>
 {% endblock %}
