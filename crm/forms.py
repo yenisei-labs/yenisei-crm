@@ -86,3 +86,37 @@ class DealOrderForm(forms.Form):
     # Required fields
     list = forms.ModelChoiceField(DealList.objects.all())
     order = forms.IntegerField()
+
+
+class PersonForm(forms.Form):
+    # Required fields
+    first_name = forms.CharField(
+        max_length=32,
+        label=_('First name'),
+    )
+
+    # Optional fields
+    last_name = forms.CharField(
+        max_length=32,
+        required=False, empty_value=None,
+        label=_('Last name'),
+    )
+    company = forms.CharField(
+        max_length=64,
+        required=False, empty_value=None,
+        label=_('Company'),
+    )
+    email = forms.EmailField(
+        required=False, empty_value=None,
+        label=_('Email'),
+    )
+    phone = forms.CharField(
+        max_length=20,
+        required=False, empty_value=None,
+        label=_('Phone'),
+    )
+    delivery_address = forms.CharField(
+        max_length=256,
+        required=False, empty_value=None,
+        label=_('Delivery address'),
+    )

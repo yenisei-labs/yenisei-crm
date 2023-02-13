@@ -8,8 +8,8 @@ from django.http import (
     HttpResponseRedirect,
 )
 from django.contrib.auth.decorators import login_required
-from .forms import DealListForm, DealForm, DealOrderForm
-from .models import DealList, Deal
+from .forms import DealListForm, DealForm, DealOrderForm, PersonForm
+from .models import DealList, Deal, Person
 
 @login_required
 def get_deals(request) -> HttpResponse:
@@ -49,6 +49,40 @@ def get_deals(request) -> HttpResponse:
 
 
 @login_required
+def get_contacts(request) -> HttpResponse:
+    """ Contacts, url: /crm/contacts """
+    def handle_get_method() -> HttpResponse:
+        """ Returns html """
+        return render(request, 'crm/contacts.html', {
+            'people': Person.objects.all(),
+            'form': PersonForm()
+        })
+    
+    def handle_post_method() -> HttpResponse:
+        """ Handles list form submission """
+        form = DealListForm(request.POST)
+        if not form.is_valid():
+            return HttpResponseBadRequest()
+
+        # process the data in form.cleaned_data
+        title = form.cleaned_data['title']
+        deal_list = DealList(title=title)
+        deal_list.save()
+
+        return HttpResponseRedirect('/crm/contacts/')
+
+    if request.method == 'GET':
+        return handle_get_method()
+
+    if request.method == 'POST':
+        return handle_post_method()
+
+    return HttpResponseNotAllowed(['GET', 'POST'])
+
+
+
+
+@login_required
 def new_deal(request) -> HttpResponse:
     """ A page that allows to create new deals """
 
@@ -71,18 +105,38 @@ def new_deal(request) -> HttpResponse:
             'submit_url': submit_url,
         })
 
+    if request.method == 'GET':
+        return handle_get_request()
+
+    return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
+def new_contact(request) -> HttpResponse:
+    """ A page that allows to edit contacts """
+
+    def handle_get_request() -> HttpResponse:
+        """ Returns a form to submit a contact """
+        contact_form = PersonForm(auto_id=False)
+        submit_url = f"/crm/contacts/new/"
+
+        return render(request, 'crm/new-contact.html', {
+            'contact_form': contact_form,
+            'submit_url': submit_url,
+        })
+
     def handle_post_request() -> HttpResponse:
         """ Handles form submission """
-        form = DealForm(request.POST)
+        form = PersonForm(request.POST)
         if not form.is_valid():
             print(form.errors)
             return HttpResponseBadRequest()
 
         # process the data in form.cleaned_data
-        deal = Deal(**form.cleaned_data)
-        deal.save()
+        person = Person(**form.cleaned_data)
+        person.save()
 
-        return HttpResponseRedirect('/crm/deals/')
+        return HttpResponseRedirect('/crm/contacts/')
 
     if request.method == 'GET':
         return handle_get_request()
@@ -91,6 +145,7 @@ def new_deal(request) -> HttpResponse:
         return handle_post_request()
 
     return HttpResponseNotAllowed(['GET', 'POST'])
+
 
 
 @login_required
@@ -130,6 +185,53 @@ def edit_deal(request, pk: int) -> HttpResponse:
         deal.save()
 
         return HttpResponseRedirect('/crm/deals/')
+
+    if request.method == 'GET':
+        return handle_get_request()
+
+    if request.method == 'POST':
+        return handle_post_request()
+
+    return HttpResponseNotAllowed(['GET', 'POST'])
+
+
+@login_required
+def edit_contact(request, pk: int) -> HttpResponse:
+    """ A page that allows to edit contacts """
+
+    def handle_get_request() -> HttpResponse:
+        """ Returns a form to submit changes """
+        try:
+            person = Person.objects.get(id=pk)
+        except Person.DoesNotExist:
+            return HttpResponseNotFound()
+
+        contact_form = PersonForm(model_to_dict(person))
+        submit_url = f"/crm/contacts/edit/{pk}/"
+
+        return render(request, 'crm/new-contact.html', {
+            'contact_form': contact_form,
+            'submit_url': submit_url,
+        })
+
+    def handle_post_request() -> HttpResponse:
+        """ Handles form submission """
+        try:
+            person = Person.objects.get(id=pk)
+        except Person.DoesNotExist:
+            return HttpResponseNotFound()
+        
+        form = PersonForm(request.POST)
+        if not form.is_valid():
+            print(form.errors)
+            return HttpResponseBadRequest()
+
+        # process the data in form.cleaned_data
+        for attr, value in form.cleaned_data.items():
+            setattr(person, attr, value)
+        person.save()
+
+        return HttpResponseRedirect('/crm/contacts/')
 
     if request.method == 'GET':
         return handle_get_request()

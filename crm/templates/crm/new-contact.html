@@ -1,0 +1,12 @@
+{% extends "common/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<form method="POST" action="{{submit_url}}">
+    {% csrf_token %}
+    {{ contact_form.as_p }}
+    <input type="submit" value="{% translate 'Save' %}" />
+</form>
+
+{% endblock %}

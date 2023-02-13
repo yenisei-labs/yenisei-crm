@@ -1,0 +1,10 @@
+.contact {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+.contact-title {
+    font-weight: bold;    
+}
