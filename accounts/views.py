@@ -19,7 +19,7 @@ def log_in(request):
             if user is not None:
                 login(request, user)
                 # Redirect to a success page.
-                return HttpResponseRedirect('/crm/deals/')
+                return HttpResponseRedirect('/deals/')
             else:
                 # Return an 'invalid login' error message.
                 return HttpResponseRedirect('/accounts/login/')
