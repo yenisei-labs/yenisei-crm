@@ -30,8 +30,11 @@ header {
     padding: 10px;
 }
 
+header a:first-of-type {
+    flex-grow: 1;
+}
+
 header h1 {
     margin-top: 0;
     margin-bottom: 0;
-    flex-grow: 1;
 }
