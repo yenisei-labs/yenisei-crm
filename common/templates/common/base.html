@@ -1,9 +1,11 @@
+{% load i18n %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Yenisei CRM</title>
+    <title>{% translate 'Yenisei CRM' %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'common/base.css' %}" />
     {% block head %}
@@ -11,10 +13,10 @@
   </head>
   <body>
     <header>
-        <h1>Yenisei CRM</h1>
-        <a href="/crm/deals/">Deals</a>
-        <a href="/crm/contacts/">Contacts</a>
-        <a href="/accounts/logout/">Log out</a>
+        <h1>{% translate 'Yenisei CRM' %}</h1>
+        <a href="/crm/deals/">{% translate 'Deals' %}</a>
+        <a href="/crm/contacts/">{% translate 'Contacts' %}</a>
+        <a href="/accounts/logout/">{% translate 'Log out' %}</a>
     </header>
     <main>
       {% block content %}

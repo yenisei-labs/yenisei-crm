@@ -15,6 +15,7 @@ from .env import is_production
 from .secret_key import get_secret_key
 from .db import get_database
 from .hosts import get_allowed_hosts
+from .locale import get_languages, get_language_code
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -108,10 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = get_languages()
+LANGUAGE_CODE = get_language_code()
 
 TIME_ZONE = 'UTC'
 
+USE_L10N = True
 USE_I18N = True
 
 USE_TZ = True
