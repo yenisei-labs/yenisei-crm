@@ -17,7 +17,7 @@ async function saveOrder(listId, order, csrfToken) {
             body: formData
         }
 
-        const url = `/crm/api/deals/${dealId}/`
+        const url = `/api/order/${dealId}/`
         const res = await fetch(url, options)
         if (!res.ok) alert("Save order: request failed")
         i++;
@@ -57,7 +57,7 @@ async function patch_deal_list(event, list_id, csrf_token) {
     const fd = new FormData()
     fd.append('title', event.target.title.value)
 
-    const url = `/crm/api/lists/${list_id}/`
+    const url = `/api/lists/${list_id}/`
     const options = {
         method: "POST", // django doesn't understand PATCH?
         headers: {
@@ -78,7 +78,7 @@ async function delete_deal_list(csrf_token, list_id) {
     const confirmation = confirm("Do you really want to delete this list?")
     if (!confirmation) return
 
-    const url = `/crm/api/lists/${list_id}/`
+    const url = `/api/lists/${list_id}/`
     const options = {
         method: "DELETE",
         headers: {
