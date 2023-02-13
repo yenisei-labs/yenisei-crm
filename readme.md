@@ -14,7 +14,7 @@ pip install -r requirements.txt
 Start dev server:
 ```bash
 python manage.py migrate
-django-admin compilemessages
+python manage.py compilemessages
 python manage.py runserver
 ```
 
