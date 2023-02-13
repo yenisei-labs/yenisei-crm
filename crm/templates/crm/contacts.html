@@ -8,13 +8,13 @@
 {% endblock %}
 
 {% block content %}
-<a href="/crm/contacts/new">{% translate 'New contact' %}</a>
+<a href="/contacts/new">{% translate 'New contact' %}</a>
 
 {% for person in people %}
 <div class="contact">
     <div class="contact-title">
         {{ person.first_name }} {% if person.last_name %}{{ person.last_name }}{% endif %}
-        <a href="/crm/contacts/edit/{{ person.id }}/">
+        <a href="/contacts/edit/{{ person.id }}/">
             <img src="{% static 'crm/pen-to-square-solid.svg' %}" width="12px" height="12px" />
         </a>
     </div>

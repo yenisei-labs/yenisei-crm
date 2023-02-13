@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<form method="POST" action="/crm/deals/" class="new-list-form">
+<form method="POST" action="/deals/" class="new-list-form">
     <h2>{% translate 'New deal list' %}</h2>
     {% csrf_token %}
     {{ new_deal_form }}
@@ -32,7 +32,7 @@
                     <img src="{% static 'crm/trash-solid.svg' %}" width="12px" height="12px" />
                 </button>
             </form>
-            <button class="create-btn" onclick="window.location.href='/crm/new-deal/?list={{ deal_list.id }}'">
+            <button class="create-btn" onclick="window.location.href='/deals/new/?list={{ deal_list.id }}'">
                 <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
                 {% translate 'Create a deal' %}
             </button>
@@ -41,7 +41,7 @@
             {% for deal in deal_list.deals.all %}
             <li class="deal" data-id="{{deal.id}}">
                 <p>{{ deal.title }}</p>
-                <a class="edit" href="/crm/edit-deal/{{deal.id}}/">
+                <a class="edit" href="/deals/edit/{{deal.id}}/">
                     <img src="{% static 'crm/pen-to-square-solid.svg' %}" width="12px" height="12px" />
                 </a>
             </li>
