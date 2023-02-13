@@ -56,3 +56,8 @@ services:
 volumes:
   crm-db:
 ```
+
+## Icons
+
+Icons were borrowed from [Font Awesome](https://fontawesome.com).
+The [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) applies to their svg files.
