@@ -1,3 +1,7 @@
+.page {
+    padding: 1em;
+}
+
 .contact {
     border: 1px solid #ddd;
     padding: 5px;
@@ -6,5 +10,15 @@
 }
 
 .contact-title {
-    font-weight: bold;    
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+}
+
+.contact-title img {
+    opacity: 0.6;
+}
+
+.contact-title img:hover {
+    opacity: 1;
 }

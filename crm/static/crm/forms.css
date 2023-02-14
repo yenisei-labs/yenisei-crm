@@ -1,0 +1,42 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    margin: 1em;
+    width: 100%;
+    max-width: 500px;
+}
+
+form p {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+form input,
+form textarea,
+form select {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    background-color: white;
+}
+
+form > input {
+    width: 100%;
+    cursor: pointer;
+}
+
+form input:focus,
+form input:hover,
+form textarea:focus,
+form textarea:hover,
+form select:focus,
+form select:hover {
+    border: 1px solid black;
+}
