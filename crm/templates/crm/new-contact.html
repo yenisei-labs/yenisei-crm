@@ -1,12 +1,19 @@
 {% extends "common/base.html" %}
 
+{% load static %}
 {% load i18n %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'crm/css/forms.css' %}" />
+{% endblock %}
+
 {% block content %}
-<form method="POST" action="{{submit_url}}">
-    {% csrf_token %}
-    {{ contact_form.as_p }}
-    <input type="submit" value="{% translate 'Save' %}" />
-</form>
+<div class="page">
+    <form method="POST" action="{{submit_url}}">
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <input type="submit" value="{% translate 'Save' %}" />
+    </form>
+</div>
 
 {% endblock %}

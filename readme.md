@@ -50,6 +50,7 @@ services:
       - Y_CRM_HOST=yenisei-crm.com
       - Y_CRM_DB_HOST=yenisei-crm-db
       - Y_CRM_DB_PASSWORD=secret-pass
+      - Y_CRM_LOCALE=en
     depends_on:
       - yenisei-crm-db
 

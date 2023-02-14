@@ -4,15 +4,17 @@
 {% load i18n %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'crm/new-deal.css' %}" />
+<link rel="stylesheet" href="{% static 'crm/css/forms.css' %}" />
 {% endblock %}
 
 {% block content %}
-<form method="POST" action="{{submit_url}}">
-    {% csrf_token %}
-    {{ deal_form.as_p }}
-    <input type="submit" value="{% translate 'Save' %}" />
-</form>
+<div class="page">
+    <form method="POST" action="{{submit_url}}">
+        {% csrf_token %}
+        {{ deal_form.as_p }}
+        <input type="submit" value="{% translate 'Save' %}" />
+    </form>
+</div>
 
-<script src="{% static 'crm/new-deal.js' %}"></script>
+<script src="{% static 'crm/js/new-deal.js' %}"></script>
 {% endblock %}

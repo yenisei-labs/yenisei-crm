@@ -1,0 +1,24 @@
+.page {
+    padding: 1em;
+}
+
+.contact {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+.contact-title {
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+}
+
+.contact-title img {
+    opacity: 0.6;
+}
+
+.contact-title img:hover {
+    opacity: 1;
+}

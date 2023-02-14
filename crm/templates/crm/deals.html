@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'crm/deals.css' %}" />
+<link rel="stylesheet" href="{% static 'crm/css/deals.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
     {% csrf_token %}
     {{ new_deal_form }}
     <button type="submit">
-        <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
+        <img src="{% static 'crm/svg/plus-solid.svg' %}" width="12px" height="12px" />
     </button>
 </form>
 
@@ -26,14 +26,14 @@
             <form class="title" onsubmit="patch_deal_list(event, {{ deal_list.id }}, '{{ csrf_token }}')">
                 <input name="title" value="{{ deal_list.title }}" />
                 <button type="submit">
-                    <img src="{% static 'crm/floppy-disk-regular.svg' %}" width="12px" height="12px" />
+                    <img src="{% static 'crm/svg/floppy-disk-regular.svg' %}" width="12px" height="12px" />
                 </button>
                 <button type="button" onclick="delete_deal_list('{{ csrf_token }}', {{ deal_list.id }})">
-                    <img src="{% static 'crm/trash-solid.svg' %}" width="12px" height="12px" />
+                    <img src="{% static 'crm/svg/trash-solid.svg' %}" width="12px" height="12px" />
                 </button>
             </form>
             <button class="create-btn" onclick="window.location.href='/deals/new/?list={{ deal_list.id }}'">
-                <img src="{% static 'crm/plus-solid.svg' %}" width="12px" height="12px" />
+                <img src="{% static 'crm/svg/plus-solid.svg' %}" width="12px" height="12px" />
                 {% translate 'Create a deal' %}
             </button>
 
@@ -42,7 +42,7 @@
             <li class="deal" data-id="{{deal.id}}">
                 <p>{{ deal.title }}</p>
                 <a class="edit" href="/deals/edit/{{deal.id}}/">
-                    <img src="{% static 'crm/pen-to-square-solid.svg' %}" width="12px" height="12px" />
+                    <img src="{% static 'crm/svg/pen-to-square-solid.svg' %}" width="12px" height="12px" />
                 </a>
             </li>
             {% endfor %}
@@ -65,6 +65,6 @@
     {% endif %}
 </div>
 
-<script src="{% static 'crm/deals.js' %}" ></script>
-<script src="{% static 'crm/sortable-1.15.0.min.js' %}"></script>
+<script src="{% static 'crm/js/deals.js' %}" ></script>
+<script src="{% static 'crm/js/sortable-1.15.0.min.js' %}"></script>
 {% endblock %}

@@ -4,7 +4,7 @@ from .views import (
     get_deals, get_contacts,
     new_deal, new_contact,
     edit_deal, edit_contact,
-    list_api, deal_order_api,
+    list_api, deal_order_api, search_api,
 )
 
 urlpatterns = [
@@ -17,4 +17,5 @@ urlpatterns = [
     path("contacts/edit/<int:pk>/", edit_contact, name="edit_contact"),
     path("api/lists/<int:pk>/", list_api, name="list_api"),
     path("api/order/<int:pk>/", deal_order_api, name="deal_order_api"),
+    path("api/search/<str:query>/", search_api, name="search"),
 ]

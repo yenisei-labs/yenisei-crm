@@ -11,8 +11,13 @@
     background-color: white;
 }
 
-.new-list-form input[type=text] {
+.new-list-form input {
     width: 200px;
+}
+
+.new-list-form input:hover,
+.new-list-form input:focus {
+    border: 1px solid black;
 }
 
 .new-list-form button {
@@ -24,6 +29,11 @@
     border: 1px solid #000;
 }
 
+hr {
+    border-top: 1px solid #aaa;
+    border-bottom: none;
+}
+
 #list-container {
     display: flex;
     gap: 10px;
@@ -31,7 +41,7 @@
 }
 
 .deal-list {
-    border: 1px solid #ddd;
+    border: 1px solid #aaa;
     border-radius: 4px;
     padding: 10px;
 }

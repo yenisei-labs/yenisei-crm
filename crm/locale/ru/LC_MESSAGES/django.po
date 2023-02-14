@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 11:41+0500\n"
+"POT-Creation-Date: 2023-02-14 09:58+0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,11 +95,11 @@ msgstr "Email"
 msgid "Phone"
 msgstr "Телефон"
 
-#: crm/templates/crm/contacts.html:6
+#: crm/templates/crm/contacts.html:12
 msgid "New contact"
 msgstr "Новый контакт"
 
-#: crm/templates/crm/contacts.html:14
+#: crm/templates/crm/contacts.html:54
 msgid "No contacts"
 msgstr "Нет контактов"
 
@@ -115,6 +115,6 @@ msgstr "Создать сделку"
 msgid "Deals without list"
 msgstr "Сделки без списка"
 
-#: crm/templates/crm/new-deal.html:14
+#: crm/templates/crm/new-contact.html:15 crm/templates/crm/new-deal.html:15
 msgid "Save"
 msgstr "Сохранить"

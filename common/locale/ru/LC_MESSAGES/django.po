@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 11:29+0500\n"
+"POT-Creation-Date: 2023-02-14 09:58+0500\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,14 +19,18 @@ msgstr ""
 msgid "Yenisei CRM"
 msgstr "Енисей CRM"
 
-#: common/templates/common/base.html:17
+#: common/templates/common/base.html:19
+msgid "Search..."
+msgstr "Поиск..."
+
+#: common/templates/common/base.html:22
 msgid "Deals"
 msgstr "Сделки"
 
-#: common/templates/common/base.html:18
+#: common/templates/common/base.html:23
 msgid "Contacts"
 msgstr "Контакты"
 
-#: common/templates/common/base.html:19
+#: common/templates/common/base.html:24
 msgid "Log out"
 msgstr "Выйти"
