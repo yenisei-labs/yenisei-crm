@@ -6,6 +6,7 @@ from django.http import (
     HttpResponseNotFound,
     HttpResponseNotAllowed,
     HttpResponseRedirect,
+    JsonResponse,
 )
 from django.contrib.auth.decorators import login_required
 from .forms import DealListForm, DealForm, DealOrderForm, PersonForm
@@ -338,3 +339,25 @@ def deal_order_api(request, pk: int) -> HttpResponse:
         return handle_post_request()
 
     return HttpResponseNotAllowed(['POST'])
+
+
+@login_required
+def search_api(request, query: str) -> HttpResponse:
+    deals = Deal.objects.filter(title__istartswith=query)
+    people = Person.objects.filter(first_name__istartswith=query)
+
+    results = []
+    for deal in deals:
+        results.append({
+            'title': deal.title,
+            'url': f'/deals/edit/{deal.id}/',
+            'type': 'deal',
+        })
+    for person in people:
+        results.append({
+            'title': person.first_name,
+            'url': f'/contacts/edit/{person.id}/',
+            'type': 'contact',
+        })
+
+    return JsonResponse(results, safe=False)

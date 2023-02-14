@@ -8,15 +8,24 @@
     <title>{% translate 'Yenisei CRM' %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'common/base.css' %}" />
+    <script src="{% static 'common/search.js' %}"></script>
     {% block head %}
     {% endblock %}
   </head>
   <body>
     <header>
         <a href="/deals/"><h1>{% translate 'Yenisei CRM' %}</h1></a>
-        <a href="/deals/">{% translate 'Deals' %}</a>
-        <a href="/contacts/">{% translate 'Contacts' %}</a>
-        <a href="/accounts/logout/">{% translate 'Log out' %}</a>
+
+        <div class="search">
+            <input type="text" placeholder="{% translate 'Search...' %}" oninput="search(event)" />
+            <div id="search-container"></div>
+        </div>
+        
+        <div class="links">
+            <a href="/deals/">{% translate 'Deals' %}</a>
+            <a href="/contacts/">{% translate 'Contacts' %}</a>
+            <a href="/accounts/logout/">{% translate 'Log out' %}</a>
+        </div>
     </header>
     <main>
       {% block content %}
