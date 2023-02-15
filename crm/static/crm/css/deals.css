@@ -97,7 +97,9 @@ hr {
 
 .sortable-deal-list {
     min-height: 150px;
-    padding-left: 0;
+    max-height: 400px;
+    padding: 0px;
+    overflow-y: scroll;
 }
 
 .sortable-deal-list li {
