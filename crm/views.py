@@ -104,7 +104,7 @@ def new_deal(request) -> HttpResponse:
         deal_form = DealForm(auto_id=False)
         submit_url = f"/deals/new/"
 
-        return render(request, 'crm/new-deal.html', {
+        return render(request, 'crm/deal-form.html', {
             'deal_list': deal_list,
             'deal_form': deal_form,
             'submit_url': submit_url,
@@ -136,14 +136,14 @@ def new_deal(request) -> HttpResponse:
 
 @login_required
 def new_contact(request) -> HttpResponse:
-    """ A page that allows to edit contacts """
+    """ A page that allows to create new contacts """
 
     def handle_get_request() -> HttpResponse:
         """ Returns a form to submit a contact """
         contact_form = PersonForm(auto_id=False)
         submit_url = f"/contacts/new/"
 
-        return render(request, 'crm/new-contact.html', {
+        return render(request, 'crm/contact-form.html', {
             'contact_form': contact_form,
             'submit_url': submit_url,
         })
@@ -185,7 +185,7 @@ def edit_deal(request, pk: int) -> HttpResponse:
         deal_form = DealForm(model_to_dict(deal))
         submit_url = f"/deals/edit/{pk}/"
 
-        return render(request, 'crm/new-deal.html', {
+        return render(request, 'crm/deal-form.html', {
             'deal_form': deal_form,
             'submit_url': submit_url,
         })
@@ -232,7 +232,7 @@ def edit_contact(request, pk: int) -> HttpResponse:
         contact_form = PersonForm(model_to_dict(person))
         submit_url = f"/contacts/edit/{pk}/"
 
-        return render(request, 'crm/new-contact.html', {
+        return render(request, 'crm/contact-form.html', {
             'contact_form': contact_form,
             'submit_url': submit_url,
         })
