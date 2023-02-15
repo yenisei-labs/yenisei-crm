@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1em;
 }
 
 form {
@@ -39,4 +40,10 @@ form textarea:hover,
 form select:focus,
 form select:hover {
     border: 1px solid black;
+}
+
+@media screen and (max-width: 500px) {
+    form textarea {
+        min-width: 0;
+    }
 }

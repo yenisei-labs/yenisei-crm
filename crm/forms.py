@@ -56,8 +56,6 @@ class DealForm(forms.Form):
         label=_('Delivery date'),
         required=False,
         initial=datetime.datetime.now,
-        input_formats=['%H:%M %d.%m.%Y'],
-        widget=forms.DateTimeInput(format='%H:%M %d.%m.%Y'),
     )
     delivery_address = forms.CharField(
         label=_('Delivery address'),
