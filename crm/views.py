@@ -343,8 +343,8 @@ def deal_order_api(request, pk: int) -> HttpResponse:
 
 @login_required
 def search_api(request, query: str) -> HttpResponse:
-    deals = Deal.objects.filter(title__istartswith=query)
-    people = Person.objects.filter(first_name__istartswith=query)
+    deals = Deal.objects.filter(title__icontains=query)
+    people = Person.objects.filter(first_name__icontains=query)
 
     results = []
     for deal in deals:
