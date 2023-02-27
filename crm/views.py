@@ -105,6 +105,7 @@ def new_deal(request) -> HttpResponse:
         submit_url = '/deals/new/'
 
         return render(request, 'crm/deal-form.html', {
+            'deal_id': -1,
             'deal_list': deal_list,
             'deal_form': deal_form,
             'submit_url': submit_url,
@@ -170,7 +171,6 @@ def new_contact(request) -> HttpResponse:
     return HttpResponseNotAllowed(['GET', 'POST'])
 
 
-
 @login_required
 def edit_deal(request, pk: int) -> HttpResponse:
     """ A page that allows to edit deals """
@@ -186,6 +186,7 @@ def edit_deal(request, pk: int) -> HttpResponse:
         submit_url = f"/deals/edit/{pk}/"
 
         return render(request, 'crm/deal-form.html', {
+            'deal_id': deal.id,
             'deal_form': deal_form,
             'submit_url': submit_url,
         })
@@ -216,6 +217,25 @@ def edit_deal(request, pk: int) -> HttpResponse:
         return handle_post_request()
 
     return HttpResponseNotAllowed(['GET', 'POST'])
+
+
+@login_required
+def delete_deal(request, pk: int) -> HttpResponse:
+    """The page that deletes the deal specified in the url."""
+
+    def handle_get_request() -> HttpResponse:
+        try:
+            deal = Deal.objects.get(id=pk)
+        except Deal.DoesNotExist:
+            return HttpResponseNotFound()
+
+        deal.delete()
+        return HttpResponseRedirect('/deals/')
+
+    if request.method == 'GET':
+        return handle_get_request()
+
+    return HttpResponseNotAllowed(['GET'])
 
 
 @login_required

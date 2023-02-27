@@ -17,6 +17,7 @@ form p {
     gap: 10px;
 }
 
+form button,
 form input,
 form textarea,
 form select {
@@ -28,11 +29,15 @@ form select {
     background-color: white;
 }
 
+form > button,
 form > input {
     width: 100%;
     cursor: pointer;
+    margin: 5px 0;
 }
 
+from button:active,
+form button:hover,
 form input:focus,
 form input:hover,
 form textarea:focus,

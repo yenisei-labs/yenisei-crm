@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 09:58+0500\n"
+"POT-Creation-Date: 2023-02-27 12:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,41 +59,45 @@ msgstr "Налог"
 msgid "Delivery date"
 msgstr "Дата доставки"
 
-#: crm/forms.py:63 crm/forms.py:121
+#: crm/forms.py:61 crm/forms.py:119
 msgid "Delivery address"
 msgstr "Адрес доставки"
 
-#: crm/forms.py:68
+#: crm/forms.py:66
 msgid "Loading address"
 msgstr "Адрес погрузки"
 
-#: crm/forms.py:75
+#: crm/forms.py:73
 msgid "Buyer"
 msgstr "Покупатель"
 
-#: crm/forms.py:80
+#: crm/forms.py:78
 msgid "List of deals"
 msgstr "Список сделок"
 
-#: crm/forms.py:95
+#: crm/forms.py:93
 msgid "First name"
 msgstr "Имя"
 
-#: crm/forms.py:102
+#: crm/forms.py:100
 msgid "Last name"
 msgstr "Фамилия"
 
-#: crm/forms.py:107
+#: crm/forms.py:105
 msgid "Company"
 msgstr "Компания"
 
-#: crm/forms.py:111
+#: crm/forms.py:109
 msgid "Email"
 msgstr "Email"
 
-#: crm/forms.py:116
+#: crm/forms.py:114
 msgid "Phone"
 msgstr "Телефон"
+
+#: crm/templates/crm/contact-form.html:15 crm/templates/crm/deal-form.html:15
+msgid "Save"
+msgstr "Сохранить"
 
 #: crm/templates/crm/contacts.html:12
 msgid "New contact"
@@ -102,6 +106,10 @@ msgstr "Новый контакт"
 #: crm/templates/crm/contacts.html:54
 msgid "No contacts"
 msgstr "Нет контактов"
+
+#: crm/templates/crm/deal-form.html:16
+msgid "Delete"
+msgstr "Удалить"
 
 #: crm/templates/crm/deals.html:13
 msgid "New deal list"
@@ -114,7 +122,3 @@ msgstr "Создать сделку"
 #: crm/templates/crm/deals.html:55
 msgid "Deals without list"
 msgstr "Сделки без списка"
-
-#: crm/templates/crm/new-contact.html:15 crm/templates/crm/new-deal.html:15
-msgid "Save"
-msgstr "Сохранить"

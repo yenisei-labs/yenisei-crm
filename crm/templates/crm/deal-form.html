@@ -13,6 +13,9 @@
         {% csrf_token %}
         {{ deal_form.as_p }}
         <input type="submit" value="{% translate 'Save' %}" />
+        {% if deal_id != -1 %}
+            <button type="button" onclick="location.href='/deals/delete/{{ deal_id }}/'">{% translate 'Delete' %}</button>
+        {% endif %}
     </form>
 </div>
 
