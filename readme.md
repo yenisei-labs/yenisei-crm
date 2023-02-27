@@ -58,6 +58,12 @@ volumes:
   crm-db:
 ```
 
+## Linters
+To run all configured linters, you can type the command:
+```bash
+make lint
+```
+
 ## Icons
 
 Icons were borrowed from [Font Awesome](https://fontawesome.com).

@@ -1,6 +1,5 @@
 from django import forms
 from django.utils.translation import gettext as _
-from .models import User
 
 
 class LogInForm(forms.Form):
@@ -8,5 +7,5 @@ class LogInForm(forms.Form):
     password = forms.CharField(
         label=_('Password'),
         max_length=100,
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput,
     )

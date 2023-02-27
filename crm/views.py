@@ -102,7 +102,7 @@ def new_deal(request) -> HttpResponse:
             return HttpResponseNotFound()
 
         deal_form = DealForm(auto_id=False)
-        submit_url = f"/deals/new/"
+        submit_url = '/deals/new/'
 
         return render(request, 'crm/deal-form.html', {
             'deal_list': deal_list,
@@ -141,7 +141,7 @@ def new_contact(request) -> HttpResponse:
     def handle_get_request() -> HttpResponse:
         """ Returns a form to submit a contact """
         contact_form = PersonForm(auto_id=False)
-        submit_url = f"/contacts/new/"
+        submit_url = '/contacts/new/'
 
         return render(request, 'crm/contact-form.html', {
             'contact_form': contact_form,
