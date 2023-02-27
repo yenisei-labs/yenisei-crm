@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Person(models.Model):
+    """Buyer or seller model."""
+
     # Required fields
     first_name = models.CharField(max_length=32)
 
@@ -17,6 +19,13 @@ class Person(models.Model):
 
 
 class DealList(models.Model):
+    """List of deals.
+
+    Examples:
+        'In progress'
+        'Completed'
+    """
+
     title = models.CharField(max_length=128)
 
     def __str__(self):
@@ -24,6 +33,8 @@ class DealList(models.Model):
 
 
 class Deal(models.Model):
+    """Deal model."""
+
     # Required fields
     title = models.CharField(max_length=128)
     

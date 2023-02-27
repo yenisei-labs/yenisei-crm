@@ -20,9 +20,13 @@ def redirect_to_deals(request) -> HttpResponse:
 
 @login_required
 def get_deals(request) -> HttpResponse:
-    """ The main page, url: /deals """
+    """Main page with a list of deals.
+
+    Url:
+        /deals/
+    """
     def handle_get_method() -> HttpResponse:
-        """ Returns html """
+        """Get page content."""
         deal_lists = DealList.objects.all()
         deal_list_form = DealListForm()
         deals_without_list = Deal.objects.filter(list=None)
@@ -34,7 +38,10 @@ def get_deals(request) -> HttpResponse:
         })
     
     def handle_post_method() -> HttpResponse:
-        """ Handles list form submission """
+        """Handle form submission.
+
+        The function creates a new list of deals.
+        """
         form = DealListForm(request.POST)
         if not form.is_valid():
             return HttpResponseBadRequest()
@@ -57,16 +64,20 @@ def get_deals(request) -> HttpResponse:
 
 @login_required
 def get_contacts(request) -> HttpResponse:
-    """ Contacts, url: /contacts/ """
+    """Page with the list of contacts.
+
+    Url:
+        /contacts/
+    """
     def handle_get_method() -> HttpResponse:
-        """ Returns html """
+        """Get page content."""
         return render(request, 'crm/contacts.html', {
             'people': Person.objects.all(),
             'form': PersonForm()
         })
     
     def handle_post_method() -> HttpResponse:
-        """ Handles list form submission """
+        """Process the form and create a new contact."""
         form = DealListForm(request.POST)
         if not form.is_valid():
             return HttpResponseBadRequest()
@@ -89,10 +100,14 @@ def get_contacts(request) -> HttpResponse:
 
 @login_required
 def new_deal(request) -> HttpResponse:
-    """ A page that allows to create new deals """
+    """A page that allows to create new deals.
+
+    Url:
+        /deals/new/
+    """
 
     def handle_get_request() -> HttpResponse:
-        """ Returns a form to submit a new deal """
+        """Get a form to create a new deal."""
         try:
             list_id = request.GET['list']
             deal_list = DealList.objects.get(id=list_id)
@@ -111,9 +126,8 @@ def new_deal(request) -> HttpResponse:
             'submit_url': submit_url,
         })
 
-
     def handle_post_request() -> HttpResponse:
-        """ Handles form submission """
+        """Process the form and create a new deal."""
         form = DealForm(request.POST)
         if not form.is_valid():
             print(form.errors)
@@ -124,7 +138,6 @@ def new_deal(request) -> HttpResponse:
         deal.save()
 
         return HttpResponseRedirect('/deals/')
-
 
     if request.method == 'GET':
         return handle_get_request()
@@ -137,10 +150,13 @@ def new_deal(request) -> HttpResponse:
 
 @login_required
 def new_contact(request) -> HttpResponse:
-    """ A page that allows to create new contacts """
-
+    """Page for creating new contacts.
+    
+    Url:
+        /contacts/new/
+    """
     def handle_get_request() -> HttpResponse:
-        """ Returns a form to submit a contact """
+        """Get a form to create a contact."""
         contact_form = PersonForm(auto_id=False)
         submit_url = '/contacts/new/'
 
@@ -150,7 +166,7 @@ def new_contact(request) -> HttpResponse:
         })
 
     def handle_post_request() -> HttpResponse:
-        """ Handles form submission """
+        """Process the form and create a contact."""
         form = PersonForm(request.POST)
         if not form.is_valid():
             print(form.errors)
@@ -173,10 +189,14 @@ def new_contact(request) -> HttpResponse:
 
 @login_required
 def edit_deal(request, pk: int) -> HttpResponse:
-    """ A page that allows to edit deals """
+    """Page for editing deals.
+
+    Url:
+        /deals/edit/<pk>/
+    """
 
     def handle_get_request() -> HttpResponse:
-        """ Returns a form to submit changes """
+        """Get a form to make changes."""
         try:
             deal = Deal.objects.get(id=pk)
         except Deal.DoesNotExist:
@@ -192,7 +212,7 @@ def edit_deal(request, pk: int) -> HttpResponse:
         })
 
     def handle_post_request() -> HttpResponse:
-        """ Handles form submission """
+        """Process the form and save the modified deal."""
         try:
             deal = Deal.objects.get(id=pk)
         except Deal.DoesNotExist:
@@ -222,28 +242,28 @@ def edit_deal(request, pk: int) -> HttpResponse:
 @login_required
 def delete_deal(request, pk: int) -> HttpResponse:
     """The page that deletes the deal specified in the url."""
+    if request.method != 'GET':
+        return HttpResponseNotAllowed(['GET'])
 
-    def handle_get_request() -> HttpResponse:
-        try:
-            deal = Deal.objects.get(id=pk)
-        except Deal.DoesNotExist:
-            return HttpResponseNotFound()
+    try:
+        deal = Deal.objects.get(id=pk)
+    except Deal.DoesNotExist:
+        return HttpResponseNotFound()
 
-        deal.delete()
-        return HttpResponseRedirect('/deals/')
-
-    if request.method == 'GET':
-        return handle_get_request()
-
-    return HttpResponseNotAllowed(['GET'])
+    deal.delete()
+    return HttpResponseRedirect('/deals/')
 
 
 @login_required
 def edit_contact(request, pk: int) -> HttpResponse:
-    """ A page that allows to edit contacts """
+    """Page for editing contacts.
+
+    Url:
+        /contacts/edit/<pk>/
+    """
 
     def handle_get_request() -> HttpResponse:
-        """ Returns a form to submit changes """
+        """Get a form to make changes."""
         try:
             person = Person.objects.get(id=pk)
         except Person.DoesNotExist:
@@ -258,7 +278,7 @@ def edit_contact(request, pk: int) -> HttpResponse:
         })
 
     def handle_post_request() -> HttpResponse:
-        """ Handles form submission """
+        """Process the form and save the modified contact."""
         try:
             person = Person.objects.get(id=pk)
         except Person.DoesNotExist:
@@ -287,9 +307,17 @@ def edit_contact(request, pk: int) -> HttpResponse:
 
 @login_required
 def list_api(request, pk: int) -> HttpResponse:
-    # Formally, this is instead of a PATCH request.
-    # I couldn't find a way to get the data from the PATCH request.
+    """API for changing or deleting the list of deals.
+
+    Url:
+        /api/lists/<pk>/
+    """
     def handle_post_request() -> HttpResponse:
+        """Process the form and save the changes to the list.
+
+        Formally, this is instead of a PATCH request.
+        I couldn't find a way to get the data from the PATCH request.
+        """
         try:
             deal_list = DealList.objects.get(id=pk)
         except DealList.DoesNotExist:
@@ -310,6 +338,7 @@ def list_api(request, pk: int) -> HttpResponse:
         return response
 
     def handle_delete_request() -> HttpResponse:
+        """Process a request to remove a list."""
         try:
             deal_list = DealList.objects.get(id=pk)
         except DealList.DoesNotExist:
@@ -331,9 +360,17 @@ def list_api(request, pk: int) -> HttpResponse:
 
 @login_required
 def deal_order_api(request, pk: int) -> HttpResponse:
-    # Formally, this is instead of a PATCH request.
-    # I couldn't find a way to get the data from the PATCH request.
+    """API for changing the order of deals when dragging them.
+
+    Url:
+        /api/order/<pk>/
+    """
     def handle_post_request() -> HttpResponse:
+        """Handle a list or order change.
+        
+        Formally, this is instead of a PATCH request.
+        I couldn't find a way to get the data from the PATCH request.
+        """
         try:
             deal = Deal.objects.get(id=pk)
         except Deal.DoesNotExist:
@@ -363,6 +400,7 @@ def deal_order_api(request, pk: int) -> HttpResponse:
 
 @login_required
 def search_api(request, query: str) -> HttpResponse:
+    """Api for searching by deal titles."""
     deals = Deal.objects.filter(title__icontains=query)
     people = Person.objects.filter(first_name__icontains=query)
 

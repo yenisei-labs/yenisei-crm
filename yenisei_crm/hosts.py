@@ -1,6 +1,7 @@
 import os
 
 def get_allowed_hosts(add_scheme = False) -> list[str]:
+    """Get a list of allowed hosts for security settings."""
     scheme = 'http://' if add_scheme else ''
     allowed_hosts = [
         scheme + 'localhost',

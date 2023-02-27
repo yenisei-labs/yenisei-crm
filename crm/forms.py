@@ -5,10 +5,14 @@ from .models import DealList, Person
 
 
 class DealListForm(forms.Form):
+    """Form for creating or changing the list of deals."""
+
     title = forms.CharField(label=_('Title'), max_length=128)
 
 
 class DealForm(forms.Form):
+    """Form for creating or editing deals."""
+
     # Required fields
     title = forms.CharField(label=_('Title *'), max_length=128)
     
@@ -81,12 +85,19 @@ class DealForm(forms.Form):
 
 
 class DealOrderForm(forms.Form):
+    """Form for editing the deal order.
+
+    Sent when cards are dragged.
+    """
+
     # Required fields
     list = forms.ModelChoiceField(DealList.objects.all())
     order = forms.IntegerField()
 
 
 class PersonForm(forms.Form):
+    """Form for creating or editing a contact."""
+
     # Required fields
     first_name = forms.CharField(
         max_length=32,
